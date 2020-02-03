@@ -1,0 +1,14 @@
+{
+    "map_name": "Good Ship Technical Debt",
+    "map_path": "map_files/debug",
+    "map_file": "goodship_techdebt.dmm",
+	"shuttles": {
+	    "cargo": "cargo_delta"
+    },
+	"space_ruin_levels": -1,
+	"minetype": "disabled",
+	"overmap": ["over_budget.dmm"],
+	"over_traits": [{"Astraeus System":1, "Station":0},
+		{"Hyperspace":1, "Station":0},
+		{"Corvi System":1, "Station":0}]
+}
