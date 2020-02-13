@@ -87,13 +87,14 @@
 
 //The return of data disks?? Just for transferring between genetics machine/cloning machine.
 //TO-DO: Make the genetics machine accept them.
+/* //HIJACKING ALL THIS SHIT FOR COMP3 -FRANC //NSV FUCK
 /obj/item/disk/data
 	name = "cloning data disk"
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	var/list/fields = list()
 	var/list/mutations = list()
 	var/max_mutations = 6
-	var/read_only = FALSE //Well,it's still a floppy disk
+	//var/read_only = FALSE //Well,it's still a floppy disk
 
 //Disk stuff.
 /obj/item/disk/data/Initialize()
@@ -108,7 +109,7 @@
 /obj/item/disk/data/examine(mob/user)
 	. = ..()
 	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
-
+*/
 
 //Clonepod
 
