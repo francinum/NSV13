@@ -444,11 +444,11 @@ datum/signal/proc/show()
 	icon_state = "dterm"
 	desc = "An underfloor connection point for power line communication equipment."
 	level = 1
-	layer = FLOOR_EQUIP_LAYER1
-	anchored = 1
-	directwired = 0
+//	layer = WIRE_TERMINAL_LAYER
+//	anchored = 1
+//	directwired = 0
 	use_datanet = 1
-	mats = 5
+//	mats = 5
 	var/obj/master = null //It can be any obj that can use receive_signal
 
 	ex_act()

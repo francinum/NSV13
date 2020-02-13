@@ -13,7 +13,7 @@
 	var/frequency = "0000"
 	var/datum/radio_frequency/radio_connection
 
-	mats = 25
+//	mats = 25
 
 	New()
 		..()
@@ -25,7 +25,7 @@
 					src.link = test_link
 					src.link.master = src
 
-			if(radio_controller)
+			if(SSradio)
 				initialize()
 			src.net_id = generate_net_id(src)
 
@@ -151,7 +151,7 @@
 						if(sigcommand == "call")
 							//don't spam call it you buttes
 							#warn All this code is based around return values for shuttle procs that the EShuttle doesn't support.
-							if(emergency_shuttle.online || SSshuttle.requestEvac(null, signal.data["reason"]) //Returns 1 on failure
+							if(emergency_shuttle.online || SSshuttle.requestEvac(null, signal.data["reason"])) //Returns 1 on failure
 								src.post_reply("SHUTL_E_DIS", target)
 								return
 							src.post_reply("SHUTL_E_SEN", target)
