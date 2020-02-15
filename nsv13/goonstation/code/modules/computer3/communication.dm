@@ -134,7 +134,7 @@
 							src.print_text("Severe signal interference is preventing contact with the Emergency Shuttle.")
 						else
 							src.print_text("Transmitting recall request...")
-							generate_signal(comm_net_id, "command", "recall", "shuttle_id", "emergency", "acc_code", netpass_heads)
+							generate_signal(comm_net_id, "command", "recall", "shuttle_id", "emergency", "acc_code", GLOB.netpass_heads)
 
 					if("help")
 						var/help_text = {"<b>Commands:</b>
@@ -184,7 +184,7 @@
 */
 				var/call_reason = copytext(html_decode(trim(strip_html(html_decode(text)))), 1, 140)
 				src.print_text("Transmitting call request...")
-				generate_signal(comm_net_id, "command", "call", "shuttle_id", "emergency", "acc_code", netpass_heads, "reason", call_reason)
+				generate_signal(comm_net_id, "command", "call", "shuttle_id", "emergency", "acc_code", netpass_heads, "reason", GLOB.call_reason)
 				log_game("[usr] attempted to call the Emergency Shuttle via COMMaster (reason: [call_reason])")
 				//logTheThing("diary", usr, null, "attempted to call the Emergency Shuttle via COMMaster (reason: [call_reason])", "admin")
 				message_admins("<span style=\"color:blue\">[key_name(usr)] attempted to call the Emergency Shuttle to the station via COMMaster</span>")

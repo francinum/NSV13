@@ -1148,13 +1148,13 @@
 			return
 		else
 			var/format = opts["t"]
-			var/t = time_track.current_tickcount % 10
+			var/t = SStime_track.current_tickcount % 10
 			format = replacetext(format, "%t", "[t]")
-			var/s = round(time_track.current_tickcount / 10) % 60
+			var/s = round(SStime_track.current_tickcount / 10) % 60
 			format = replacetext(format, "%s", "[s]")
-			var/m = round(time_track.current_tickcount / 600) % 60
+			var/m = round(SStime_track.current_tickcount / 600) % 60
 			format = replacetext(format, "%m", "[m]")
-			var/h = round(time_track.current_tickcount / 36000)
+			var/h = round(SStime_track.current_tickcount / 36000)
 			format = replacetext(format, "%h", "[h]")
 			message_reply_and_user(format)
 			mainframe_prog_exit

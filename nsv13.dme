@@ -3111,6 +3111,7 @@
 #include "nsv13\goonstation\code\modules\computer3\emailclient.dm"
 #include "nsv13\goonstation\code\modules\computer3\engine.dm"
 #include "nsv13\goonstation\code\modules\computer3\med_rec.dm"
+#include "nsv13\goonstation\code\modules\computer3\NSV_Components.dm"
 #include "nsv13\goonstation\code\modules\computer3\peripherals.dm"
 #include "nsv13\goonstation\code\modules\computer3\sec_rec.dm"
 #include "nsv13\goonstation\code\modules\computer3\smallprogs.dm"

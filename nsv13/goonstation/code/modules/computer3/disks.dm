@@ -39,8 +39,6 @@
 		if (root)
 			qdel(root)
 			root = null
-
-		data = null
 		//NSV Handling
 		fields = null
 		mutations = null
@@ -51,10 +49,8 @@
 		if (!D)
 			return
 
-		D.data = src.data
-		D.ue = src.ue
-		D.data_type = src.data_type
-		D.owner = src.owner
+		D.fields = src.fields
+		D.mutations = src.mutations
 		D.read_only = src.read_only
 
 		D.title = src.title
@@ -83,7 +79,7 @@
 	..()
 	to_chat(usr, text("The write-protect tab is set to [src.read_only ? "protected" : "unprotected"]."))
 	return
-
+/*
 /obj/item/disk/data/floppy/demo
 	name = "data disk - 'Farmer Jeff'"
 	data = "0C80C80C80C80C80C8000000000000161FBDDEF"
@@ -95,7 +91,7 @@
 	data_type = "se"
 	data = "0983E840344C39F4B059D5145FC5785DC6406A4FFF"
 	read_only = 1
-
+*/
 /obj/item/disk/data/fixed_disk
 	name = "Storage Drive"
 	icon_state = "harddisk"
@@ -276,7 +272,7 @@
 	icon_state = "nucleardisk"
 	item_state = "card-id"
 	w_class = 1.0
-	mats = 15
+//	mats = 15
 	random_color = 0
 	file_amount = 32.0
 

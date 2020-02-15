@@ -502,7 +502,7 @@ datum/signal/proc/show()
 
 				if (iterations/100 < 1)
 					iterations = 0
-					LAGCHECK(LAG_REALTIME)
+					CHECK_TICK
 
 				iterations++
 

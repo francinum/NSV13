@@ -25,18 +25,16 @@
 					src.link = test_link
 					src.link.master = src
 
-			if(SSradio)
-				initialize()
 			src.net_id = generate_net_id(src)
 
-	initialize()
-		radio_connection = radio_controller.add_object(src, "[frequency]")
+	Initialize()
+		radio_connection = SSradio.add_object(src, "[frequency]")
 
 	disposing()
 		if (link)
 			link.master = null
 		link = null
-		radio_controller.remove_object(src, "[frequency]")
+		SSradio.remove_object(src, "[frequency]")
 		..()
 
 	proc
@@ -63,7 +61,7 @@
 				report.fields = report_content.Copy()
 				report.name = "report[messagetext.len]"
 
-				var/datum/signal/signal = get_free_signal()
+				var/datum/signal/signal = new(src)
 				signal.source = src
 				signal.transmission_method = TRANSMISSION_WIRE
 				signal.data["command"] = "term_file"
@@ -80,7 +78,7 @@
 			if(!src.link || !target_id)
 				return
 
-			var/datum/signal/signal = get_free_signal()
+			var/datum/signal/signal = new(src)
 			signal.source = src
 			signal.transmission_method = TRANSMISSION_WIRE
 			signal.data[key] = value
@@ -137,7 +135,7 @@
 			if("call", "recall") //Time to call/cancel a shuttle!
 				switch(signal.data["shuttle_id"])
 					if("emergency")
-						if(signal.data["acc_code"] != netpass_heads) //Cool dudes with head codes only thanks.
+						if(signal.data["acc_code"] != GLOB.netpass_heads) //Cool dudes with head codes only thanks.
 							return //Otherwise you have every jerk calling the shuttle from medbay or some shit.
 
 						var/call_reason = ""

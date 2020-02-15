@@ -36,7 +36,7 @@
 	var/full_user = 0
 	var/datum/computer/file/mainframe_program/current_prog = null
 
-	disposing()
+	Destroy()
 		current_prog = null
 		user_file = null
 		user_file_folder = null

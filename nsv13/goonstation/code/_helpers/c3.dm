@@ -77,3 +77,10 @@ GLOBAL_VAR_INIT(netpass_medical, gen_netpass())
 		return
 	. = copytext(refstring,4,(length(refstring)))
 	. = add_zero(., 8)
+
+/proc/generate_net_id(var/atom/the_atom)
+	if(!the_atom) return
+	var/tag_holder = the_atom.tag
+	the_atom.tag = null //So we generate from internal ref id
+	. = format_net_id("\ref[the_atom]")
+	the_atom.tag = tag_holder

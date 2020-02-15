@@ -18,7 +18,7 @@
 	var/obj/item/disk/data/floppy/diskette = null
 	var/list/peripherals = list()
 	var/restarting = 0 //Are we currently restarting the system?
-	var/datum/light/light
+//	var/datum/light/light
 
 	//Does it spawn with a card scanner? (It should, the main os needs one of these now.)
 	var/setup_idscan_path = null
@@ -64,13 +64,13 @@
 			setup_starting_program = /datum/computer/file/terminal_program/medical_records
 
 			console_upper
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "medicalcomputer1"
 				base_icon_state = "azungarcomputer_upper"
 				setup_frame_type = /obj/computer3frame/azungarcomputer_upper
 
 			console_lower
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "medicalcomputer2"
 				base_icon_state = "azungarcomputer_lower"
 				setup_frame_type = /obj/computer3frame/azungarcomputer_lower
@@ -84,11 +84,11 @@
 			setup_starting_program = /datum/computer/file/terminal_program/secure_records
 
 			console_upper
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "securitycomputer1"
 				base_icon_state = "securitycomputer1"
 			console_lower
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "securitycomputer2"
 				base_icon_state = "securitycomputer2"
 
@@ -101,11 +101,11 @@
 			setup_drive_size = 80
 
 			console_upper
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "communications1"
 				base_icon_state = "communications1"
 			console_lower
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "communications2"
 				base_icon_state = "communications2"
 
@@ -154,15 +154,15 @@
 			setup_drive_size = 48
 
 			console_upper
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "engine1"
 				base_icon_state = "engine1"
 			console_lower
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "engine2"
 				base_icon_state = "engine2"
 			manta_computer
-				icon = 'icons/obj/32x96.dmi'
+				icon = 'nsv13/goonstation/icons/obj/32x96.dmi'
 				icon_state = "nuclearcomputer"
 				anchored = 2
 				density = 1
@@ -192,11 +192,11 @@
 		setup_starting_os = /datum/computer/file/terminal_program/os/terminal_os
 
 		console_upper
-			icon = 'icons/obj/computerpanel.dmi'
+			icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 			icon_state = "dwaine1"
 			base_icon_state = "dwaine1"
 		console_lower
-			icon = 'icons/obj/computerpanel.dmi'
+			icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 			icon_state = "dwaine2"
 			base_icon_state = "dwaine2"
 
@@ -206,11 +206,11 @@
 			setup_starting_peripheral1 = /obj/item/peripheral/network/powernet_card/terminal
 
 			console_upper
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "dwaine1"
 				base_icon_state = "dwaine1"
 			console_lower
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "dwaine2"
 				base_icon_state = "dwaine2"
 
@@ -220,11 +220,11 @@
 			setup_starting_peripheral1 = /obj/item/peripheral/network/powernet_card/terminal
 
 			console_upper
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "dwaine1"
 				base_icon_state = "dwaine1"
 			console_lower
-				icon = 'icons/obj/computerpanel.dmi'
+				icon = 'nsv13/goonstation/icons/obj/computerpanel.dmi'
 				icon_state = "dwaine2"
 				base_icon_state = "dwaine2"
 
@@ -262,9 +262,11 @@
 /obj/machinery/computer3/New()
 	..()
 
-	light = new/datum/light/point
-	light.set_brightness(0.4)
-	light.attach(src)
+//	light = new/datum/light/point
+//	light.set_brightness(0.4)
+//	light.attach(src)
+
+	set_light(2, 2)
 
 	spawn(4)
 
@@ -1025,18 +1027,18 @@ function lineEnter (ev)
 /obj/machinery/computer3/luggable
 	New()
 		..()
-		src.cell = new /obj/item/cell(src)
+		src.cell = new /obj/item/stock_parts/cell(src)
 		src.cell.maxcharge = setup_charge_maximum
 		src.cell.charge = src.cell.maxcharge
 		return
 
-	disposing()
+	Destroy()
 		if (src.cell)
-			src.cell.dispose()
+			qdel(src.cell)
 			src.cell = null
 
 		if (case && case.loc == src)
-			case.dispose()
+			qdel(case)
 			case = null
 
 		..()
@@ -1068,16 +1070,15 @@ function lineEnter (ev)
 		if (istype(W, /obj/item/disk/data/floppy)) //INSERT SOME DISKETTES
 			if ((!src.diskette) && src.setup_has_internal_disk)
 				user.machine = src
-				user.drop_item()
-				W.set_loc(src)
+				user.transferItemToLoc(W, src)
 				src.diskette = W
-				boutput(user, "You insert [W].")
+				to_chat(user, "You insert [W].")
 				src.updateUsrDialog()
 				return
 
-		else if (ispryingtool(W))
+		else if (W.tool_behaviour == TOOL_CROWBAR)
 			if(!src.cell)
-				boutput(user, "<span style=\"color:red\">There is no energy cell inserted!</span>")
+				to_chat(user, "<span style=\"color:red\">There is no energy cell inserted!</span>")
 				return
 
 			playsound(src.loc, "sound/items/Crowbar.ogg", 50, 1)
@@ -1087,7 +1088,7 @@ function lineEnter (ev)
 			src.power_change()
 			return
 
-		else if (istype(W, /obj/item/cell))
+		else if (istype(W, /obj/item/stock_parts/cell))
 			if(src.cell)
 				boutput(user, "<span style=\"color:red\">There is already an energy cell inserted!</span>")
 

@@ -15,6 +15,12 @@
 	use_power = NO_POWER_USE
 	idle_power_usage = 0
 	active_power_usage = 0
+	//NSV
+	var/netnum = 0
+	var/use_datanet = 0		// If set to 1, communicate with other devices over cable network.
+	var/directwired = 1		// by default, power machines are connected by a cable in a neighbouring turf
+							// if set to 0, requires a 0-X cable on this turf
+	//END_NSV
 
 /obj/machinery/power/Destroy()
 	disconnect_from_network()

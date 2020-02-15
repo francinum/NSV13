@@ -935,6 +935,10 @@
 			prize_location = get_turf(src)
 
 		switch(prizeselect)
+			else
+				#warn DUMMIED OUT PRIZE CODE
+				prize = new obj/item/toy(prize_location)
+				/*
 			if(1)
 				var/obj/item/spacecash/P = unpool(/obj/item/spacecash)
 				P.setup(prize_location)
@@ -964,7 +968,7 @@
 				prize.name = "decloaking device"
 				prize.desc = "A device for removing cloaks. Made in Space-Taiwan."
 				prize:det_time = 5
-
+*/
 
 /obj/item/peripheral/card_scanner
 	name = "ID scanner module"
@@ -1022,7 +1026,7 @@
 	proc/eject_card()
 		if(src.authid)
 			src.authid.set_loc(get_turf(src))
-			usr.put_in_hand_or_eject(src.authid) // try to eject it into the users hand, if we can
+			usr.put_in_hands(src.authid) // try to eject it into the users hand, if we can
 			src.authid = null
 		return
 

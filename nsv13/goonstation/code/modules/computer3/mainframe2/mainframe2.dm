@@ -948,7 +948,7 @@
 	if (!the_message)
 		return 1
 
-	for (var/obj/machinery/networked/mainframe/aMainframe in machines)//world)
+	for (var/obj/machinery/networked/mainframe/aMainframe in GLOB.machines)//world)
 		CHECK_TICK
 		if (aMainframe.z != 1)
 			continue
