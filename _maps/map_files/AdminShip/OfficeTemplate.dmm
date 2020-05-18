@@ -1,0 +1,12 @@
+"a" = (/turf/closed/wall/ship,/area/space)
+"b" = (/turf/open/floor,/area/space)
+
+(1,1,1) = {"
+aaaaaaa
+abbbbba
+abbbbba
+abbbbba
+abbbbba
+abbbbba
+aaaaaaa
+"}

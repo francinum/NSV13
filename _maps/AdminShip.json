@@ -1,0 +1,27 @@
+{
+	"map_name": "NAV Farsight",
+	"map_path": "map_files/AdminShip",
+	"map_link": null,
+	"map_file": ["AShipDEV.dmm"],
+	"traits": [{
+		"Up": 1
+	}, {
+		"Down": -1
+	}],
+	"space_ruin_levels": -1,
+	"minetype": null,
+	"overmap": ["overmap.dmm"],
+	"over_traits": [{
+			"Astraeus System": 1,
+			"Station": 0
+		},
+		{
+			"Hyperspace": 1,
+			"Station": 0
+		},
+		{
+			"Corvi System": 1,
+			"Station": 0
+		}
+	]
+}

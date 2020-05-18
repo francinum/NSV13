@@ -45,3 +45,6 @@ endmap
 #map multiz_debug
 	disabled
 endmap
+
+map AdminShip
+endmap
